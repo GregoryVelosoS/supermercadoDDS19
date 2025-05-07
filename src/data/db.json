@@ -1,0 +1,29 @@
+{
+    "usuarios":[    
+        {
+            "id":"7",
+            "nome":"C. Ronaldo",
+            "email":"cr7@gmail.com",
+            "senha":"7"
+        },
+        {
+            "id":"2",
+            "nome":"Gregory",
+            "email":"gregory@gmail.com",
+            "senha":"7"
+        },
+        {
+            "id":"3",
+            "nome":"Goku",
+            "email":"goku@gmail.com",
+            "senha":"7"
+        }
+    ],
+    "produtos":[
+
+    ],
+    "categorias":[
+
+    ]
+
+}

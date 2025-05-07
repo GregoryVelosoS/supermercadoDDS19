@@ -8,17 +8,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 
 // Importando o componente de barra de navegação
-import BarraNavegacao from "./components/BarraNavegacao.jsx"
+import BarraNavegacao from "./components/BarraNavegacao.jsx";
+
+import { AuthProvider } from "./contexts/UserContext.jsx";
 
 function App() {
   return (
     <>
-      <div className="App">
-        <BarraNavegacao />
-        <Container>
-          <Outlet />
-        </Container>
-      </div>
+      <AuthProvider>
+        <div className="App">
+          <BarraNavegacao />
+          <Container>
+            <Outlet />
+          </Container>
+        </div>
+      </AuthProvider>
     </>
   );
 }

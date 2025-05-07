@@ -7,8 +7,12 @@ import Button from "react-bootstrap/Button";
 // Importação do icone de mercado do react-icon
 import { BsShop } from "react-icons/bs";
 
+import { useContext } from "react";
+import { AuthContext } from "../contexts/UserContext";
+
 const BarraNavegacao = () => {
-  const usuarioNome = "Visitante"
+  const { usuarioNome, logout } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar expand="lg" bg="success" data-bs-theme="dark">
@@ -33,16 +37,20 @@ const BarraNavegacao = () => {
             <Nav className="justify-content-end">
               {/* Nome do usuário */}
               <Navbar.Text style={{ color: "white", marginRight: "5px" }}>
-                Usuário: {usuarioNome} | 
+                Usuário: {usuarioNome} |
               </Navbar.Text>
               {/* Caso o usuario tenha feito login, aparece o botao de sair, se não, o botão de entrar */}
               {usuarioNome === "Visitante" ? (
                 <>
-                  <Button variant="primary" href="/login">Entrar</Button>
+                  <Button variant="primary" href="/login">
+                    Entrar
+                  </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="danger" href="/login"> Sair </Button>
+                  <Button variant="danger" href="/login" onClick={logout}>
+                    Sair
+                  </Button>
                 </>
               )}
             </Nav>
