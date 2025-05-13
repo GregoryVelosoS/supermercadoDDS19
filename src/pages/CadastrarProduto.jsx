@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+
+import { useContext } from "react";
+import { AuthContext } from "../contexts/UserContext";
+import { Navigate } from "react-router-dom";
 
 const CadastrarProduto = () => {
-  return (
-    <div>CadastrarProduto</div>
-  )
-}
+  const { usuarioNome } = useContext(AuthContext);
 
-export default CadastrarProduto
+  if (usuarioNome === "Visitante") return <Navigate to="/login" />;
+  return <div>CadastrarProduto</div>;
+};
+
+export default CadastrarProduto;

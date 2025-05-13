@@ -8,33 +8,41 @@ import Alert from "react-bootstrap/Alert";
 // Importação do Hook form pra validar e enviar o formulário
 import { useForm } from "react-hook-form";
 import { BsBoxArrowInRight } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useVerificaLogin } from "../hooks/useApi";
 import { useNavigate } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../contexts/UserContext";
+
 const Login = () => {
-     const {
+  const { logout } = useContext(AuthContext);
+
+  useEffect(() => {
+    logout()
+  }, []);
+
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  
-  const { verificaLogin } = useVerificaLogin()
 
-  const navigate = useNavigate()
+  const { verificaLogin } = useVerificaLogin();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log("Dados:", data);
 
-    const respostaVerificacao = verificaLogin(data)
+    const respostaVerificacao = verificaLogin(data);
 
-    if(respostaVerificacao == "Login efetuado com sucesso"){
-      alert(respostaVerificacao)
-      navigate("/home")
-    }
-    else{
-      setAlertClass("mb-5 mt-2")
-      setAlertMensagem(respostaVerificacao)
+    if (respostaVerificacao == "Login efetuado com sucesso") {
+      alert(respostaVerificacao);
+      navigate("/home");
+    } else {
+      setAlertClass("mb-5 mt-2");
+      setAlertMensagem(respostaVerificacao);
     }
   };
 
