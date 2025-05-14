@@ -33,7 +33,8 @@ const Formulario = (props) => {
 
   const categorias = useListaCategorias()
 
-
+  console.log(categorias)
+  
   const { id } = useParams();
 
   const navigate = useNavigate();
